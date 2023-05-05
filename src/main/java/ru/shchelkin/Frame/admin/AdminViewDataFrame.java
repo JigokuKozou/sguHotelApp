@@ -10,9 +10,11 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.lang.reflect.Field;
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.IntStream;
 
 public class AdminViewDataFrame extends BackButtonFrame {
     private final Map<String, Dao<?>> daoMap = new LinkedHashMap<>();
@@ -50,39 +52,32 @@ public class AdminViewDataFrame extends BackButtonFrame {
     private <T> void showTable(Dao<T> dao) {
         List<T> data = dao.getAll();
         CustomTable<T> table = new CustomTable<>(dao.getObjectClass(), data);
-        JScrollPane scrollPane = new JScrollPane(table,
-                JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
-                JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        JScrollPane scrollPane = new JScrollPane(table);
         JButton updateButton = new JButton("Update");
         JButton deleteButton = new JButton("Delete");
         updateButton.addActionListener(e -> {
-            int selectedRow = table.getSelectedRow();
-            if (selectedRow != -1) {
-                T selectedItem = data.get(selectedRow);
+            int selectedViewRow  = table.getSelectedRow();
+            if (selectedViewRow  != -1) {
+                int modelRow = table.convertRowIndexToModel(selectedViewRow);
+                T selectedItem = data.get(modelRow);
                 EditDialog<T> dialog = new EditDialog<>(this, selectedItem);
                 dialog.setVisible(true);
                 if (dialog.isConfirmed()) {
                     T updatedItem = dialog.getItem();
-                    // Изменить данные выбранной строки на основе данных из формы редактирования
                     dao.update(updatedItem);
-                    // Обновить данные в таблице
-                    List<T> newData = dao.getAll();
-                    table.setData(newData);
-                    table.fireTableDataChanged();
+                    showTable(dao);
                 }
             }
         });
         deleteButton.addActionListener(e -> {
-            int selectedRow = table.getSelectedRow();
-            if (selectedRow != -1) {
-                T selectedItem = data.get(selectedRow);
+            int selectedViewRow = table.getSelectedRow();
+            if (selectedViewRow != -1) {
+                int modelRow = table.convertRowIndexToModel(selectedViewRow);
+                T selectedItem = data.get(modelRow);
                 int option = JOptionPane.showConfirmDialog(this, "Вы действительно хотите удалить запись?", "Удаление", JOptionPane.YES_NO_OPTION);
                 if (option == JOptionPane.YES_OPTION) {
-                    // Удалить выбранную строку из таблицы
-                    DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
-                    tableModel.removeRow(selectedRow);
-                    // Удалить выбранную строку из БД
                     dao.delete(selectedItem);
+                    showTable(dao);
                 }
             }
         });
@@ -105,56 +100,19 @@ public class AdminViewDataFrame extends BackButtonFrame {
         public CustomTable(Class<T> clazz, List<T> data) {
             this.data = data;
             this.fields = clazz.getDeclaredFields();
-            tableModel = new CustomTableModel(fields, getDataArray());
+            tableModel = new CustomTableModel(fields, getRowsData());
             setModel(tableModel);
             setAutoCreateRowSorter(true);
             setFillsViewportHeight(true);
-        }
-
-        private Object[][] getDataArray() {
-            Object[][] array = new Object[data.size()][fields.length];
-            for (int i = 0; i < data.size(); i++) {
-                T obj = data.get(i);
-                for (int j = 0; j < fields.length; j++) {
-                    try {
-                        fields[j].setAccessible(true);
-                        Object value = fields[j].get(obj);
-                        if (value instanceof String && ((String) value).matches("\\d+,*\\d*")) {
-                            value = ((String) value).replace(",", ".");
-                        }
-                        array[i][j] = value;
-                    } catch (IllegalAccessException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-            return array;
+            setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         }
 
         public void setData(List<T> newData) {
             this.data = newData;
-            DefaultTableModel model = (DefaultTableModel) this.getModel();
-            model.setRowCount(0);
+            tableModel.setRowCount(0);
             for (T item : newData) {
-                model.addRow(getRowData(item));
+                tableModel.addRow(getRowData(item));
             }
-        }
-
-        private Object[] getRowData(T item) {
-            Object[] rowData = new Object[fields.length];
-            for (int i = 0; i < fields.length; i++) {
-                fields[i].setAccessible(true);
-                try {
-                    Object value = fields[i].get(item);
-                    if (value instanceof String && ((String) value).matches("\\d+,*\\d*")) {
-                        value = ((String) value).replace(",", ".");
-                    }
-                    rowData[i] = value;
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                }
-            }
-            return rowData;
         }
 
         private Object prepareCellValue(Object value) {
@@ -164,9 +122,28 @@ public class AdminViewDataFrame extends BackButtonFrame {
             return value;
         }
 
+        private Object[] getRowData(T item) {
+            Object[] rowData = new Object[fields.length];
+            IntStream.range(0, fields.length)
+                    .forEach(i -> {
+                        fields[i].setAccessible(true);
+                        try {
+                            rowData[i] = prepareCellValue(fields[i].get(item));
+                        } catch (IllegalAccessException e) {
+                            e.printStackTrace();
+                        }
+                    });
+            return rowData;
+        }
+
+        private Object[][] getRowsData() {
+            return data.stream()
+                    .map(this::getRowData)
+                    .toArray(Object[][]::new);
+        }
+
         public void fireTableDataChanged() {
-            tableModel.fireTableStructureChanged();
-            tableModel.fireTableRowsUpdated(0, data.size() - 1);
+            tableModel.fireTableDataChanged();
         }
 
         @Override
@@ -174,7 +151,7 @@ public class AdminViewDataFrame extends BackButtonFrame {
             return false;
         }
 
-        private class CustomTableModel extends DefaultTableModel {
+        private static class CustomTableModel extends DefaultTableModel {
             private final Field[] fields;
 
             public CustomTableModel(Field[] fields, Object[][] rowData) {
@@ -183,11 +160,9 @@ public class AdminViewDataFrame extends BackButtonFrame {
             }
 
             private static String[] getColumnNames(Field[] fields) {
-                String[] columnNames = new String[fields.length];
-                for (int i = 0; i < fields.length; i++) {
-                    columnNames[i] = fields[i].getName();
-                }
-                return columnNames;
+                return Arrays.stream(fields)
+                        .map(Field::getName)
+                        .toArray(String[]::new);
             }
         }
     }

@@ -32,6 +32,8 @@ public class EditDialog<T> extends JDialog {
         for (Field field : fields) {
             JLabel label = new JLabel(field.getName(), JLabel.RIGHT);
             JTextField textField = new JTextField();
+            if (field.getName().equals("id")) // если имя поля "id"
+                textField.setEditable(false);
             try {
                 field.setAccessible(true); // Позволяет получать доступ к приватным полям
                 Object value = field.get(item);

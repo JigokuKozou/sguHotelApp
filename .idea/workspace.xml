@@ -4,39 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dafe817d-3d69-49cd-90ec-7c30300a2621" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Frame/BackButtonFrame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Frame/OperationModeFrame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Frame/UserMenuFrame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Frame/admin/AdminMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Frame/admin/AdminViewDataFrame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Program.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/dao/Dao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/model/Accommodation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/model/Cleaner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/model/Client.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/model/Employee.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/model/FormerEmployee.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/model/Hotel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/model/OrderedService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/model/Reservation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/model/Room.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/model/RoomType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/model/Service.java" afterDir="false" />
+    <list default="true" id="dafe817d-3d69-49cd-90ec-7c30300a2621" name="Changes" comment="refresable">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Frame/admin/AdminViewDataFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Frame/admin/AdminViewDataFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/shchelkin/util/EditDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/util/EditDialog.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,6 +82,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "last_opened_file_path": "C:/Users/ilyas/IdeaProjects/hotelApp",
+    "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
@@ -256,8 +228,44 @@
       <workItem from="1683223473388" duration="2085000" />
       <workItem from="1683228091434" duration="1134000" />
       <workItem from="1683231781836" duration="5766000" />
-      <workItem from="1683274802402" duration="14710000" />
+      <workItem from="1683274802402" duration="25401000" />
     </task>
+    <task id="LOCAL-00001" summary="viewData">
+      <created>1683289550817</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1683289550817</updated>
+    </task>
+    <task id="LOCAL-00002" summary="fix">
+      <created>1683291730234</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1683291730234</updated>
+    </task>
+    <task id="LOCAL-00003" summary="fix">
+      <created>1683292258580</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1683292258580</updated>
+    </task>
+    <task id="LOCAL-00004" summary="now editable">
+      <created>1683295802164</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1683295802164</updated>
+    </task>
+    <task id="LOCAL-00005" summary="refresable">
+      <created>1683297867625</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1683297867625</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -273,5 +281,12 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="viewData" />
+    <MESSAGE value="fix" />
+    <MESSAGE value="now editable" />
+    <MESSAGE value="refresable" />
+    <option name="LAST_COMMIT_MESSAGE" value="refresable" />
   </component>
 </project>

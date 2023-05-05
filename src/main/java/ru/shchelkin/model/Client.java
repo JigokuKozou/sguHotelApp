@@ -10,5 +10,5 @@ public class Client {
     private String patronymic;
     private int passport_serial;
     private int passport_number;
-    private String phone_number;
+    private Long phone_number;
 }

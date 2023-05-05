@@ -4,101 +4,94 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import ru.shchelkin.Frame.BackButtonFrame;
 import ru.shchelkin.dao.Dao;
 import ru.shchelkin.model.*;
+import ru.shchelkin.util.EditDialog;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.lang.reflect.Field;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 public class AdminViewDataFrame extends BackButtonFrame {
+    private final Map<String, Dao<?>> daoMap = new LinkedHashMap<>();
     private JComboBox<String> tableSelector;
-
-    private final Dao<Client> clientDao;
-    private final Dao<Employee> employeeDao;
-    private final Dao<FormerEmployee> formerEmployeeDao;
-    private final Dao<Hotel> hotelDao;
-    private final Dao<RoomType> roomTypeDao;
-    private final Dao<Service> serviceDao;
-    private final Dao<Room> roomDao;
-    private final Dao<Cleaner> cleanerDao;
-    private final Dao<Reservation> reservationDao;
-    private final Dao<Accommodation> accommodationDao;
-    private final Dao<OrderedService> orderedServiceDao;
 
     public AdminViewDataFrame(JdbcTemplate jdbcTemplate) {
         super("Просмотр справочников");
 
-        clientDao = new Dao<>(Client.class, jdbcTemplate);
-        employeeDao = new Dao<>(Employee.class, jdbcTemplate);
-        formerEmployeeDao = new Dao<>(FormerEmployee.class, jdbcTemplate);
-        hotelDao = new Dao<>(Hotel.class, jdbcTemplate);
-        roomTypeDao = new Dao<>(RoomType.class, jdbcTemplate);
-        serviceDao = new Dao<>(Service.class, jdbcTemplate);
-        roomDao = new Dao<>(Room.class, jdbcTemplate);
-        cleanerDao = new Dao<>(Cleaner.class, jdbcTemplate);
-        reservationDao = new Dao<>(Reservation.class, jdbcTemplate);
-        accommodationDao = new Dao<>(Accommodation.class, jdbcTemplate);
-        orderedServiceDao = new Dao<>(OrderedService.class, jdbcTemplate);
+        daoMap.put("Client", new Dao<>(Client.class, jdbcTemplate));
+        daoMap.put("Employee", new Dao<>(Employee.class, jdbcTemplate));
+        daoMap.put("Hotel", new Dao<>(Hotel.class, jdbcTemplate));
+        daoMap.put("RoomType", new Dao<>(RoomType.class, jdbcTemplate));
+        daoMap.put("Service", new Dao<>(Service.class, jdbcTemplate));
+        daoMap.put("Room", new Dao<>(Room.class, jdbcTemplate));
+        daoMap.put("Cleaner", new Dao<>(Cleaner.class, jdbcTemplate));
+        daoMap.put("Reservation", new Dao<>(Reservation.class, jdbcTemplate));
+        daoMap.put("Accommodation", new Dao<>(Accommodation.class, jdbcTemplate));
+        daoMap.put("OrderedService", new Dao<>(OrderedService.class, jdbcTemplate));
 
         leftPanel.setLayout(new BorderLayout());
 
-        tableSelector = new JComboBox<>(new String[]{
-                "Client", "Employee", "FormerEmployee", "Hotel", "RoomType", "Service",
-                "Room", "Cleaner", "Reservation", "Accommodation", "OrderedService"});
+        tableSelector = new JComboBox<>(daoMap.keySet().toArray(new String[0]));
         tableSelector.addActionListener(e -> {
             String tableName = (String) tableSelector.getSelectedItem();
             if (tableName != null) {
-                switch (tableName) {
-                    case "Client":
-                        showTable(Client.class, clientDao.getAll());
-                        break;
-                    case "Employee":
-                        showTable(Employee.class, employeeDao.getAll());
-                        break;
-                    case "FormerEmployee":
-                        showTable(FormerEmployee.class, formerEmployeeDao.getAll());
-                        break;
-                    case "Hotel":
-                        showTable(Hotel.class, hotelDao.getAll());
-                        break;
-                    case "RoomType":
-                        showTable(RoomType.class, roomTypeDao.getAll());
-                        break;
-                    case "Service":
-                        showTable(Service.class, serviceDao.getAll());
-                        break;
-                    case "Room":
-                        showTable(Room.class, roomDao.getAll());
-                        break;
-                    case "Cleaner":
-                        showTable(Cleaner.class, cleanerDao.getAll());
-                        break;
-                    case "Reservation":
-                        showTable(Reservation.class, reservationDao.getAll());
-                        break;
-                    case "Accommodation":
-                        showTable(Accommodation.class, accommodationDao.getAll());
-                        break;
-                    case "OrderedService":
-                        showTable(OrderedService.class, orderedServiceDao.getAll());
-                        break;
-                    default:
-                        break;
+                Dao<?> dao = daoMap.get(tableName);
+                if (dao != null) {
+                    showTable(dao);
                 }
             }
         });
         leftPanel.add(tableSelector, BorderLayout.NORTH);
     }
 
-    private <T> void showTable(Class<T> clazz, List<T> data) {
-        CustomTable<T> table = new CustomTable<>(clazz, data);
+    private <T> void showTable(Dao<T> dao) {
+        List<T> data = dao.getAll();
+        CustomTable<T> table = new CustomTable<>(dao.getObjectClass(), data);
         JScrollPane scrollPane = new JScrollPane(table,
-                        JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
-                        JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+                JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+                JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        JButton updateButton = new JButton("Update");
+        JButton deleteButton = new JButton("Delete");
+        updateButton.addActionListener(e -> {
+            int selectedRow = table.getSelectedRow();
+            if (selectedRow != -1) {
+                T selectedItem = data.get(selectedRow);
+                EditDialog<T> dialog = new EditDialog<>(this, selectedItem);
+                dialog.setVisible(true);
+                if (dialog.isConfirmed()) {
+                    T updatedItem = dialog.getItem();
+                    // Изменить данные выбранной строки на основе данных из формы редактирования
+                    dao.update(updatedItem);
+                    // Обновить выбранную строку в таблице
+                    DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
+                    tableModel.fireTableRowsUpdated(selectedRow, selectedRow);
+                }
+            }
+        });
+        deleteButton.addActionListener(e -> {
+            int selectedRow = table.getSelectedRow();
+            if (selectedRow != -1) {
+                T selectedItem = data.get(selectedRow);
+                int option = JOptionPane.showConfirmDialog(this, "Вы действительно хотите удалить запись?", "Удаление", JOptionPane.YES_NO_OPTION);
+                if (option == JOptionPane.YES_OPTION) {
+                    // Удалить выбранную строку из таблицы
+                    DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
+                    tableModel.removeRow(selectedRow);
+                    // Удалить выбранную строку из БД
+                    dao.delete(selectedItem);
+                }
+            }
+        });
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.add(updateButton);
+        buttonPanel.add(deleteButton);
         rightPanel.removeAll();
         rightPanel.setLayout(new BorderLayout());
         rightPanel.add(scrollPane, BorderLayout.CENTER);
+        rightPanel.add(buttonPanel, BorderLayout.SOUTH);
         rightPanel.revalidate();
         rightPanel.repaint();
     }

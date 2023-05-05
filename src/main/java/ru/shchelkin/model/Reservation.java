@@ -7,9 +7,9 @@ import java.time.LocalDateTime;
 @Data
 public class Reservation {
     private int id;
-    private int idClient;
-    private int idType;
-    private LocalDateTime startBooking;
-    private LocalDateTime endBooking;
-    private int accommodationsCount;
+    private int id_client;
+    private int id_type;
+    private LocalDateTime start_booking;
+    private LocalDateTime end_booking;
+    private int accommodations_count;
 }

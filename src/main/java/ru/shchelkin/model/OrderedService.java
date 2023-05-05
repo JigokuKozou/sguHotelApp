@@ -7,8 +7,8 @@ import java.time.LocalDateTime;
 @Data
 public class OrderedService {
     private int id;
-    private int idService;
-    private int idAccommodation;
+    private int id_service;
+    private int id_accommodation;
     private int count;
-    private LocalDateTime orderDate;
+    private LocalDateTime order_date;
 }

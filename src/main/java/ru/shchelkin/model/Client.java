@@ -8,7 +8,7 @@ public class Client {
     private String name;
     private String surname;
     private String patronymic;
-    private int passportSerial;
-    private int passportNumber;
-    private String phoneNumber;
+    private int passport_serial;
+    private int passport_number;
+    private String phone_number;
 }

@@ -5,8 +5,8 @@ import lombok.Data;
 @Data
 public class Room {
     private int id;
-    private int idHotel;
-    private int idType;
-    private int countRooms;
+    private int id_hotel;
+    private int id_type;
+    private int count_rooms;
     private String status;
 }

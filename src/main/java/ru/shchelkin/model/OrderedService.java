@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 
 @Data
 public class OrderedService {
+    private int id;
     private int idService;
     private int idAccommodation;
     private int count;

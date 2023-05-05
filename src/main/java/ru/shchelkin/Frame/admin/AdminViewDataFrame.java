@@ -8,12 +8,13 @@ import ru.shchelkin.util.EditDialog;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 import java.awt.*;
 import java.lang.reflect.Field;
-import java.util.Arrays;
-import java.util.LinkedHashMap;
+import java.util.*;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.IntStream;
 
 public class AdminViewDataFrame extends BackButtonFrame {
@@ -52,7 +53,17 @@ public class AdminViewDataFrame extends BackButtonFrame {
     private <T> void showTable(Dao<T> dao) {
         List<T> data = dao.getAll();
         CustomTable<T> table = new CustomTable<>(dao.getObjectClass(), data);
+
+        TableRowSorter<TableModel> sorter = new TableRowSorter<>(table.getModel()); // создаем TableRowSorter
+
+        List<RowSorter.SortKey> sortKeys = new ArrayList<>(); // создаем список SortKey для сортировки по первой колонке
+        sortKeys.add(new RowSorter.SortKey(0, SortOrder.ASCENDING));
+        sorter.setSortKeys(sortKeys); // устанавливаем список SortKey для TableRowSorter
+
+        table.setRowSorter(sorter); // устанавливаем TableRowSorter на таблицу
+
         JScrollPane scrollPane = new JScrollPane(table);
+
         JButton updateButton = new JButton("Update");
         JButton deleteButton = new JButton("Delete");
         updateButton.addActionListener(e -> {
@@ -151,7 +162,7 @@ public class AdminViewDataFrame extends BackButtonFrame {
             return false;
         }
 
-        private static class CustomTableModel extends DefaultTableModel {
+        public static class CustomTableModel extends DefaultTableModel {
             private final Field[] fields;
 
             public CustomTableModel(Field[] fields, Object[][] rowData) {

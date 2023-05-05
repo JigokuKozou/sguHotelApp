@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dafe817d-3d69-49cd-90ec-7c30300a2621" name="Changes" comment="refresable">
+    <list default="true" id="dafe817d-3d69-49cd-90ec-7c30300a2621" name="Changes" comment="fixed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Frame/admin/AdminViewDataFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Frame/admin/AdminViewDataFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/shchelkin/util/EditDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/util/EditDialog.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -228,7 +227,7 @@
       <workItem from="1683223473388" duration="2085000" />
       <workItem from="1683228091434" duration="1134000" />
       <workItem from="1683231781836" duration="5766000" />
-      <workItem from="1683274802402" duration="25401000" />
+      <workItem from="1683274802402" duration="26995000" />
     </task>
     <task id="LOCAL-00001" summary="viewData">
       <created>1683289550817</created>
@@ -265,7 +264,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683297867625</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="fixed">
+      <created>1683300465781</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1683300465781</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -287,6 +293,7 @@
     <MESSAGE value="fix" />
     <MESSAGE value="now editable" />
     <MESSAGE value="refresable" />
-    <option name="LAST_COMMIT_MESSAGE" value="refresable" />
+    <MESSAGE value="fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed" />
   </component>
 </project>

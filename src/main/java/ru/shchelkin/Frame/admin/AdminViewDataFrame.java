@@ -65,9 +65,10 @@ public class AdminViewDataFrame extends BackButtonFrame {
                     T updatedItem = dialog.getItem();
                     // Изменить данные выбранной строки на основе данных из формы редактирования
                     dao.update(updatedItem);
-                    // Обновить выбранную строку в таблице
-                    DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
-                    tableModel.fireTableRowsUpdated(selectedRow, selectedRow);
+                    // Обновить данные в таблице
+                    List<T> newData = dao.getAll();
+                    table.setData(newData);
+                    table.fireTableDataChanged();
                 }
             }
         });
@@ -98,7 +99,7 @@ public class AdminViewDataFrame extends BackButtonFrame {
 
     private static class CustomTable<T> extends JTable {
         private final DefaultTableModel tableModel;
-        private final List<T> data;
+        private List<T> data;
         private final Field[] fields;
 
         public CustomTable(Class<T> clazz, List<T> data) {
@@ -128,6 +129,44 @@ public class AdminViewDataFrame extends BackButtonFrame {
                 }
             }
             return array;
+        }
+
+        public void setData(List<T> newData) {
+            this.data = newData;
+            DefaultTableModel model = (DefaultTableModel) this.getModel();
+            model.setRowCount(0);
+            for (T item : newData) {
+                model.addRow(getRowData(item));
+            }
+        }
+
+        private Object[] getRowData(T item) {
+            Object[] rowData = new Object[fields.length];
+            for (int i = 0; i < fields.length; i++) {
+                fields[i].setAccessible(true);
+                try {
+                    Object value = fields[i].get(item);
+                    if (value instanceof String && ((String) value).matches("\\d+,*\\d*")) {
+                        value = ((String) value).replace(",", ".");
+                    }
+                    rowData[i] = value;
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
+            }
+            return rowData;
+        }
+
+        private Object prepareCellValue(Object value) {
+            if (value instanceof String && ((String) value).matches("\\d+,*\\d*")) {
+                value = Double.parseDouble(((String) value).replace(",", "."));
+            }
+            return value;
+        }
+
+        public void fireTableDataChanged() {
+            tableModel.fireTableStructureChanged();
+            tableModel.fireTableRowsUpdated(0, data.size() - 1);
         }
 
         @Override

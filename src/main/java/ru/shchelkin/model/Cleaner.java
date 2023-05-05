@@ -8,5 +8,5 @@ import java.time.LocalDateTime;
 public class Cleaner {
     private int idEmployee;
     private int idRoom;
-    private LocalDateTime date;
+    private LocalDateTime cleanDate;
 }

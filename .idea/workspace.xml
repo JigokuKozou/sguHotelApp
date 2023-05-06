@@ -5,8 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dafe817d-3d69-49cd-90ec-7c30300a2621" name="Changes" comment="fixed">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Frame/admin/ReportFrame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Frame/admin/SearchFrame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Frame/user/UserMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Frame/user/UserViewDataFrame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/model/HotelsInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/44cc86de-270c-4350-88ef-6de9279f0d99.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/44cc86de-270c-4350-88ef-6de9279f0d99.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/44cc86de-270c-4350-88ef-6de9279f0d99/storage_v2/_src_/database/HotelDB.EsW8pA/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/44cc86de-270c-4350-88ef-6de9279f0d99/storage_v2/_src_/database/HotelDB.EsW8pA/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Frame/UserMenuFrame.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Frame/admin/AdminMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Frame/admin/AdminMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Frame/admin/AdminViewDataFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Frame/admin/AdminViewDataFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Program.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,25 +86,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/ilyas/IdeaProjects/hotelApp",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "spring.configuration.checksum": "5ebfa92fc1bb9d18cdf350de1d80d809"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ilyas/IdeaProjects/hotelApp&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;5ebfa92fc1bb9d18cdf350de1d80d809&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="ru.shchelkin.Frame.user" />
       <recent name="ru.shchelkin" />
       <recent name="ru.shchelkin.Frame.interfaces" />
     </key>
@@ -228,6 +239,7 @@
       <workItem from="1683228091434" duration="1134000" />
       <workItem from="1683231781836" duration="5766000" />
       <workItem from="1683274802402" duration="26995000" />
+      <workItem from="1683344071900" duration="6624000" />
     </task>
     <task id="LOCAL-00001" summary="viewData">
       <created>1683289550817</created>
@@ -282,7 +294,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="insert" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>

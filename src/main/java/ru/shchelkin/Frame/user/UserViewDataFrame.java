@@ -1,4 +1,4 @@
-package ru.shchelkin.Frame.admin;
+package ru.shchelkin.Frame.user;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import ru.shchelkin.Frame.BackButtonFrame;
@@ -8,32 +8,22 @@ import ru.shchelkin.util.EditDialog;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import java.awt.*;
 import java.lang.reflect.Field;
-import java.util.*;
 import java.util.List;
+import java.util.*;
 import java.util.stream.IntStream;
 
-public class AdminViewDataFrame extends BackButtonFrame {
+public class UserViewDataFrame extends BackButtonFrame {
     private final Map<String, Dao<?>> daoMap = new LinkedHashMap<>();
     private JComboBox<String> tableSelector;
 
-    public AdminViewDataFrame(JdbcTemplate jdbcTemplate) {
+    public UserViewDataFrame(JdbcTemplate jdbcTemplate) {
         super("Просмотр справочников");
 
         daoMap.put("Client", new Dao<>(Client.class, jdbcTemplate));
-        daoMap.put("Employee", new Dao<>(Employee.class, jdbcTemplate));
-        daoMap.put("Hotel", new Dao<>(Hotel.class, jdbcTemplate));
-        daoMap.put("RoomType", new Dao<>(RoomType.class, jdbcTemplate));
-        daoMap.put("Service", new Dao<>(Service.class, jdbcTemplate));
-        daoMap.put("Room", new Dao<>(Room.class, jdbcTemplate));
-        daoMap.put("Cleaner", new Dao<>(Cleaner.class, jdbcTemplate));
-        daoMap.put("Reservation", new Dao<>(Reservation.class, jdbcTemplate));
-        daoMap.put("Accommodation", new Dao<>(Accommodation.class, jdbcTemplate));
-        daoMap.put("OrderedService", new Dao<>(OrderedService.class, jdbcTemplate));
 
         leftPanel.setLayout(new BorderLayout());
 

@@ -3,9 +3,9 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.43">
     <root id="1">
       <DateStyle>dmy</DateStyle>
-      <IntrospectionStateNumber>7922</IntrospectionStateNumber>
+      <IntrospectionStateNumber>8060</IntrospectionStateNumber>
       <ServerVersion>14.6</ServerVersion>
-      <StartupTime>1683274618</StartupTime>
+      <StartupTime>1683343958</StartupTime>
       <TimeZones>true ACDT
 true ACSST
 false ACST
@@ -801,7 +801,7 @@ false Zulu
 13388||10|C|G
 13388||-9223372036854775808|U|G
 13388||10|U|G</Grants>
-      <IntrospectionStateNumber>7922</IntrospectionStateNumber>
+      <IntrospectionStateNumber>8060</IntrospectionStateNumber>
       <ObjectId>17235</ObjectId>
       <Relations>sequence|table|17236|17237|1
 sequence|table|17271|17272|1
@@ -4266,139 +4266,164 @@ sequence|table|17521|17522|1
     <schema id="269" parent="2" name="public">
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <IntrospectionStateNumber>7922</IntrospectionStateNumber>
+      <IntrospectionStateNumber>8060</IntrospectionStateNumber>
       <ObjectId>2200</ObjectId>
       <StateNumber>527</StateNumber>
       <OwnerName>postgres</OwnerName>
     </schema>
-    <sequence id="270" parent="269" name="accommodations_id_seq">
+    <routine id="270" parent="269" name="get_active_reservations_for_client">
+      <ArgumentsDefinition>IN client_id integer, OUT result_cursor refcursor</ArgumentsDefinition>
+      <ObjectId>17548</ObjectId>
+      <PgRoutineKind>pg-procedure</PgRoutineKind>
+      <Rows>0.0</Rows>
+      <SourceTextLength>394</SourceTextLength>
+      <StateNumber>8054</StateNumber>
+      <LanguageName>plpgsql</LanguageName>
+      <OwnerName>postgres</OwnerName>
+    </routine>
+    <sequence id="271" parent="269" name="accommodations_id_seq">
       <DataType>integer|0s</DataType>
       <ObjectId>17485</ObjectId>
       <StateNumber>7891</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
-    <sequence id="271" parent="269" name="cleaners_id_seq">
+    <sequence id="272" parent="269" name="cleaners_id_seq">
       <DataType>integer|0s</DataType>
       <ObjectId>17521</ObjectId>
       <StateNumber>7921</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
-    <sequence id="272" parent="269" name="clients_id_seq">
+    <sequence id="273" parent="269" name="clients_id_seq">
       <DataType>integer|0s</DataType>
       <ObjectId>17236</ObjectId>
       <StateNumber>7812</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
-    <sequence id="273" parent="269" name="employees_id_seq">
+    <sequence id="274" parent="269" name="employees_id_seq">
       <DataType>integer|0s</DataType>
       <ObjectId>17306</ObjectId>
       <StateNumber>7837</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
-    <sequence id="274" parent="269" name="hotels_id_seq">
+    <sequence id="275" parent="269" name="hotels_id_seq">
       <DataType>integer|0s</DataType>
       <ObjectId>17271</ObjectId>
       <StateNumber>7821</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
-    <sequence id="275" parent="269" name="orderedservices_id_seq">
+    <sequence id="276" parent="269" name="orderedservices_id_seq">
       <DataType>integer|0s</DataType>
       <ObjectId>17503</ObjectId>
       <StateNumber>7897</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
-    <sequence id="276" parent="269" name="reservations_id_seq">
+    <sequence id="277" parent="269" name="reservations_id_seq">
       <DataType>integer|0s</DataType>
       <ObjectId>17467</ObjectId>
       <StateNumber>7879</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
-    <sequence id="277" parent="269" name="rooms_id_seq">
+    <sequence id="278" parent="269" name="rooms_id_seq">
       <DataType>integer|0s</DataType>
       <ObjectId>17382</ObjectId>
       <StateNumber>7860</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
-    <sequence id="278" parent="269" name="roomtypes_id_seq">
+    <sequence id="279" parent="269" name="roomtypes_id_seq">
       <DataType>integer|0s</DataType>
       <ObjectId>17370</ObjectId>
       <StateNumber>7857</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
-    <sequence id="279" parent="269" name="services_id_seq">
+    <sequence id="280" parent="269" name="services_id_seq">
       <DataType>integer|0s</DataType>
       <ObjectId>17339</ObjectId>
       <StateNumber>7848</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
-    <table id="280" parent="269" name="accommodations">
+    <table id="281" parent="269" name="accommodations">
       <ObjectId>17486</ObjectId>
       <StateNumber>7891</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="281" parent="269" name="cleaners">
+    <table id="282" parent="269" name="cleaners">
       <ObjectId>17522</ObjectId>
       <StateNumber>7921</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="282" parent="269" name="clients">
+    <table id="283" parent="269" name="clients">
       <ObjectId>17237</ObjectId>
       <StateNumber>7866</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="283" parent="269" name="employees">
+    <table id="284" parent="269" name="employees">
       <ObjectId>17307</ObjectId>
       <StateNumber>7863</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="284" parent="269" name="hotels">
+    <table id="285" parent="269" name="hotels">
       <ObjectId>17272</ObjectId>
       <StateNumber>7860</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="285" parent="269" name="orderedservices">
+    <table id="286" parent="269" name="orderedservices">
       <ObjectId>17504</ObjectId>
       <StateNumber>7897</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="286" parent="269" name="reservations">
+    <table id="287" parent="269" name="reservations">
       <ObjectId>17468</ObjectId>
       <StateNumber>7879</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="287" parent="269" name="rooms">
+    <table id="288" parent="269" name="rooms">
       <ObjectId>17383</ObjectId>
       <StateNumber>7860</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="288" parent="269" name="roomtypes">
+    <table id="289" parent="269" name="roomtypes">
       <ObjectId>17371</ObjectId>
       <StateNumber>7860</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="289" parent="269" name="services">
+    <table id="290" parent="269" name="services">
       <ObjectId>17340</ObjectId>
       <StateNumber>7872</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <check id="290" parent="280" name="accommodations_check">
+    <view id="291" parent="269" name="hotelsinfo">
+      <ObjectId>17549</ObjectId>
+      <SourceTextLength>258</SourceTextLength>
+      <StateNumber>8059</StateNumber>
+      <OwnerName>postgres</OwnerName>
+    </view>
+    <argument id="292" parent="270" name="client_id">
+      <DataType>integer|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="293" parent="270" name="result_cursor">
+      <ArgumentDirection>O</ArgumentDirection>
+      <DataType>refcursor|0s</DataType>
+      <Position>2</Position>
+    </argument>
+    <check id="294" parent="281" name="accommodations_check">
       <ColNames>start_date
 end_date</ColNames>
       <ObjectId>17490</ObjectId>
       <Predicate>start_date &lt; end_date</Predicate>
       <StateNumber>7891</StateNumber>
     </check>
-    <column id="291" parent="280" name="id">
+    <column id="295" parent="281" name="id">
       <DataType>integer|0s</DataType>
       <DefaultExpression>nextval(&apos;accommodations_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
@@ -4406,35 +4431,35 @@ end_date</ColNames>
       <StateNumber>7891</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="292" parent="280" name="id_reservations">
+    <column id="296" parent="281" name="id_reservations">
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StateNumber>7891</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="293" parent="280" name="id_room">
+    <column id="297" parent="281" name="id_room">
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StateNumber>7891</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="294" parent="280" name="start_date">
+    <column id="298" parent="281" name="start_date">
       <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StateNumber>7891</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <column id="295" parent="280" name="end_date">
+    <column id="299" parent="281" name="end_date">
       <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
       <Position>5</Position>
       <StateNumber>7891</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <foreign-key id="296" parent="280" name="accommodations_id_reservations_fkey">
+    <foreign-key id="300" parent="281" name="accommodations_id_reservations_fkey">
       <ColNames>id_reservations</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>17493</ObjectId>
@@ -4445,7 +4470,7 @@ end_date</ColNames>
       <RefTableName>reservations</RefTableName>
       <RefTableKind>table</RefTableKind>
     </foreign-key>
-    <foreign-key id="297" parent="280" name="accommodations_id_room_fkey">
+    <foreign-key id="301" parent="281" name="accommodations_id_room_fkey">
       <ColNames>id_room</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>17498</ObjectId>
@@ -4457,7 +4482,7 @@ end_date</ColNames>
       <RefTableName>rooms</RefTableName>
       <RefTableKind>table</RefTableKind>
     </foreign-key>
-    <index id="298" parent="280" name="accommodations_pkey">
+    <index id="302" parent="281" name="accommodations_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>17491</ObjectId>
@@ -4466,14 +4491,14 @@ end_date</ColNames>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="299" parent="280" name="accommodations_pkey">
+    <key id="303" parent="281" name="accommodations_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>17492</ObjectId>
       <Primary>1</Primary>
       <StateNumber>7891</StateNumber>
       <UnderlyingIndexId>17491</UnderlyingIndexId>
     </key>
-    <column id="300" parent="281" name="id">
+    <column id="304" parent="282" name="id">
       <DataType>integer|0s</DataType>
       <DefaultExpression>nextval(&apos;cleaners_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
@@ -4481,27 +4506,27 @@ end_date</ColNames>
       <StateNumber>7921</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="301" parent="281" name="id_employee">
+    <column id="305" parent="282" name="id_employee">
       <DataType>integer|0s</DataType>
       <Position>2</Position>
       <StateNumber>7921</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="302" parent="281" name="id_room">
+    <column id="306" parent="282" name="id_room">
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StateNumber>7921</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="303" parent="281" name="clean_date">
+    <column id="307" parent="282" name="clean_date">
       <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StateNumber>7921</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <foreign-key id="304" parent="281" name="cleaners_id_employee_fkey">
+    <foreign-key id="308" parent="282" name="cleaners_id_employee_fkey">
       <ColNames>id_employee</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>17528</ObjectId>
@@ -4513,7 +4538,7 @@ end_date</ColNames>
       <RefTableName>employees</RefTableName>
       <RefTableKind>table</RefTableKind>
     </foreign-key>
-    <foreign-key id="305" parent="281" name="cleaners_id_room_fkey">
+    <foreign-key id="309" parent="282" name="cleaners_id_room_fkey">
       <ColNames>id_room</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>17533</ObjectId>
@@ -4525,7 +4550,7 @@ end_date</ColNames>
       <RefTableName>rooms</RefTableName>
       <RefTableKind>table</RefTableKind>
     </foreign-key>
-    <index id="306" parent="281" name="cleaners_pkey">
+    <index id="310" parent="282" name="cleaners_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>17526</ObjectId>
@@ -4534,14 +4559,14 @@ end_date</ColNames>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="307" parent="281" name="cleaners_pkey">
+    <key id="311" parent="282" name="cleaners_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>17527</ObjectId>
       <Primary>1</Primary>
       <StateNumber>7921</StateNumber>
       <UnderlyingIndexId>17526</UnderlyingIndexId>
     </key>
-    <column id="308" parent="282" name="id">
+    <column id="312" parent="283" name="id">
       <DataType>integer|0s</DataType>
       <DefaultExpression>nextval(&apos;clients_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
@@ -4549,47 +4574,47 @@ end_date</ColNames>
       <StateNumber>7812</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="309" parent="282" name="name">
+    <column id="313" parent="283" name="name">
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StateNumber>7812</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="310" parent="282" name="surname">
+    <column id="314" parent="283" name="surname">
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StateNumber>7812</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="311" parent="282" name="patronymic">
+    <column id="315" parent="283" name="patronymic">
       <DataType>varchar(255)|0s</DataType>
       <Position>4</Position>
       <StateNumber>7812</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="312" parent="282" name="passport_serial">
+    <column id="316" parent="283" name="passport_serial">
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <Position>5</Position>
       <StateNumber>7812</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="313" parent="282" name="passport_number">
+    <column id="317" parent="283" name="passport_number">
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <Position>6</Position>
       <StateNumber>7812</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="314" parent="282" name="phone_number">
+    <column id="318" parent="283" name="phone_number">
       <DataType>char(11)|0s</DataType>
       <Position>7</Position>
       <StateNumber>7812</StateNumber>
       <TypeId>1042</TypeId>
     </column>
-    <index id="315" parent="282" name="clients_pkey">
+    <index id="319" parent="283" name="clients_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>17243</ObjectId>
@@ -4598,7 +4623,7 @@ end_date</ColNames>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <index id="316" parent="282" name="clients_passport_serial_passport_number_key">
+    <index id="320" parent="283" name="clients_passport_serial_passport_number_key">
       <ColNames>passport_serial
 passport_number</ColNames>
       <NameSurrogate>1</NameSurrogate>
@@ -4607,7 +4632,7 @@ passport_number</ColNames>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <index id="317" parent="282" name="clients_phone_number_key">
+    <index id="321" parent="283" name="clients_phone_number_key">
       <ColNames>phone_number</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>17245</ObjectId>
@@ -4618,32 +4643,32 @@ passport_number</ColNames>
       <CollationIds>100</CollationIds>
       <CollationParentNames>pg_catalog</CollationParentNames>
     </index>
-    <key id="318" parent="282" name="clients_pkey">
+    <key id="322" parent="283" name="clients_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>17244</ObjectId>
       <Primary>1</Primary>
       <StateNumber>7812</StateNumber>
       <UnderlyingIndexId>17243</UnderlyingIndexId>
     </key>
-    <key id="319" parent="282" name="clients_passport_serial_passport_number_key">
+    <key id="323" parent="283" name="clients_passport_serial_passport_number_key">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>17248</ObjectId>
       <StateNumber>7812</StateNumber>
       <UnderlyingIndexId>17247</UnderlyingIndexId>
     </key>
-    <key id="320" parent="282" name="clients_phone_number_key">
+    <key id="324" parent="283" name="clients_phone_number_key">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>17246</ObjectId>
       <StateNumber>7812</StateNumber>
       <UnderlyingIndexId>17245</UnderlyingIndexId>
     </key>
-    <check id="321" parent="283" name="employees_salary_check">
+    <check id="325" parent="284" name="employees_salary_check">
       <ColNames>salary</ColNames>
       <ObjectId>17311</ObjectId>
       <Predicate>salary &gt; (0)::numeric</Predicate>
       <StateNumber>7837</StateNumber>
     </check>
-    <column id="322" parent="283" name="id">
+    <column id="326" parent="284" name="id">
       <DataType>integer|0s</DataType>
       <DefaultExpression>nextval(&apos;employees_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
@@ -4651,55 +4676,55 @@ passport_number</ColNames>
       <StateNumber>7837</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="323" parent="283" name="name">
+    <column id="327" parent="284" name="name">
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StateNumber>7837</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="324" parent="283" name="surname">
+    <column id="328" parent="284" name="surname">
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StateNumber>7837</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="325" parent="283" name="patronymic">
+    <column id="329" parent="284" name="patronymic">
       <DataType>varchar(255)|0s</DataType>
       <Position>4</Position>
       <StateNumber>7837</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="326" parent="283" name="passport_serial">
+    <column id="330" parent="284" name="passport_serial">
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <Position>5</Position>
       <StateNumber>7837</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="327" parent="283" name="passport_number">
+    <column id="331" parent="284" name="passport_number">
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <Position>6</Position>
       <StateNumber>7837</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="328" parent="283" name="salary">
+    <column id="332" parent="284" name="salary">
       <DataType>numeric|0s</DataType>
       <NotNull>1</NotNull>
       <Position>7</Position>
       <StateNumber>7837</StateNumber>
       <TypeId>1700</TypeId>
     </column>
-    <column id="329" parent="283" name="status">
+    <column id="333" parent="284" name="status">
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>8</Position>
       <StateNumber>7837</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="330" parent="283" name="employees_pkey">
+    <index id="334" parent="284" name="employees_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>17314</ObjectId>
@@ -4708,7 +4733,7 @@ passport_number</ColNames>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <index id="331" parent="283" name="employees_passport_serial_passport_number_key">
+    <index id="335" parent="284" name="employees_passport_serial_passport_number_key">
       <ColNames>passport_serial
 passport_number</ColNames>
       <NameSurrogate>1</NameSurrogate>
@@ -4717,20 +4742,20 @@ passport_number</ColNames>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="332" parent="283" name="employees_pkey">
+    <key id="336" parent="284" name="employees_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>17315</ObjectId>
       <Primary>1</Primary>
       <StateNumber>7837</StateNumber>
       <UnderlyingIndexId>17314</UnderlyingIndexId>
     </key>
-    <key id="333" parent="283" name="employees_passport_serial_passport_number_key">
+    <key id="337" parent="284" name="employees_passport_serial_passport_number_key">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>17317</ObjectId>
       <StateNumber>7837</StateNumber>
       <UnderlyingIndexId>17316</UnderlyingIndexId>
     </key>
-    <column id="334" parent="284" name="id">
+    <column id="338" parent="285" name="id">
       <DataType>integer|0s</DataType>
       <DefaultExpression>nextval(&apos;hotels_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
@@ -4738,28 +4763,28 @@ passport_number</ColNames>
       <StateNumber>7821</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="335" parent="284" name="name">
+    <column id="339" parent="285" name="name">
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StateNumber>7821</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="336" parent="284" name="address">
+    <column id="340" parent="285" name="address">
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StateNumber>7821</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="337" parent="284" name="status">
+    <column id="341" parent="285" name="status">
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StateNumber>7821</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="338" parent="284" name="hotels_pkey">
+    <index id="342" parent="285" name="hotels_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>17278</ObjectId>
@@ -4768,7 +4793,7 @@ passport_number</ColNames>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <index id="339" parent="284" name="hotels_name_address_key">
+    <index id="343" parent="285" name="hotels_name_address_key">
       <ColNames>name
 address</ColNames>
       <NameSurrogate>1</NameSurrogate>
@@ -4783,26 +4808,26 @@ default</CollationNames>
       <CollationParentNames>pg_catalog
 pg_catalog</CollationParentNames>
     </index>
-    <key id="340" parent="284" name="hotels_pkey">
+    <key id="344" parent="285" name="hotels_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>17279</ObjectId>
       <Primary>1</Primary>
       <StateNumber>7821</StateNumber>
       <UnderlyingIndexId>17278</UnderlyingIndexId>
     </key>
-    <key id="341" parent="284" name="hotels_name_address_key">
+    <key id="345" parent="285" name="hotels_name_address_key">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>17281</ObjectId>
       <StateNumber>7821</StateNumber>
       <UnderlyingIndexId>17280</UnderlyingIndexId>
     </key>
-    <check id="342" parent="285" name="orderedservices_count_check">
+    <check id="346" parent="286" name="orderedservices_count_check">
       <ColNames>count</ColNames>
       <ObjectId>17508</ObjectId>
       <Predicate>count &gt; 0</Predicate>
       <StateNumber>7897</StateNumber>
     </check>
-    <column id="343" parent="285" name="id">
+    <column id="347" parent="286" name="id">
       <DataType>integer|0s</DataType>
       <DefaultExpression>nextval(&apos;orderedservices_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
@@ -4810,35 +4835,35 @@ pg_catalog</CollationParentNames>
       <StateNumber>7897</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="344" parent="285" name="id_service">
+    <column id="348" parent="286" name="id_service">
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StateNumber>7897</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="345" parent="285" name="id_accommodation">
+    <column id="349" parent="286" name="id_accommodation">
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StateNumber>7897</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="346" parent="285" name="count">
+    <column id="350" parent="286" name="count">
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StateNumber>7897</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="347" parent="285" name="order_date">
+    <column id="351" parent="286" name="order_date">
       <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
       <Position>5</Position>
       <StateNumber>7897</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <foreign-key id="348" parent="285" name="orderedservices_id_service_fkey">
+    <foreign-key id="352" parent="286" name="orderedservices_id_service_fkey">
       <ColNames>id_service</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>17511</ObjectId>
@@ -4850,7 +4875,7 @@ pg_catalog</CollationParentNames>
       <RefTableName>services</RefTableName>
       <RefTableKind>table</RefTableKind>
     </foreign-key>
-    <foreign-key id="349" parent="285" name="orderedservices_id_accommodation_fkey">
+    <foreign-key id="353" parent="286" name="orderedservices_id_accommodation_fkey">
       <ColNames>id_accommodation</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>17516</ObjectId>
@@ -4862,7 +4887,7 @@ pg_catalog</CollationParentNames>
       <RefTableName>accommodations</RefTableName>
       <RefTableKind>table</RefTableKind>
     </foreign-key>
-    <index id="350" parent="285" name="orderedservices_pkey">
+    <index id="354" parent="286" name="orderedservices_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>17509</ObjectId>
@@ -4871,20 +4896,20 @@ pg_catalog</CollationParentNames>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="351" parent="285" name="orderedservices_pkey">
+    <key id="355" parent="286" name="orderedservices_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>17510</ObjectId>
       <Primary>1</Primary>
       <StateNumber>7897</StateNumber>
       <UnderlyingIndexId>17509</UnderlyingIndexId>
     </key>
-    <check id="352" parent="286" name="reservations_accommodations_count_check">
+    <check id="356" parent="287" name="reservations_accommodations_count_check">
       <ColNames>accommodations_count</ColNames>
       <ObjectId>17472</ObjectId>
       <Predicate>accommodations_count &gt; 0</Predicate>
       <StateNumber>7879</StateNumber>
     </check>
-    <column id="353" parent="286" name="id">
+    <column id="357" parent="287" name="id">
       <DataType>integer|0s</DataType>
       <DefaultExpression>nextval(&apos;reservations_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
@@ -4892,42 +4917,42 @@ pg_catalog</CollationParentNames>
       <StateNumber>7879</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="354" parent="286" name="id_client">
+    <column id="358" parent="287" name="id_client">
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StateNumber>7879</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="355" parent="286" name="id_type">
+    <column id="359" parent="287" name="id_type">
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StateNumber>7879</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="356" parent="286" name="start_booking">
+    <column id="360" parent="287" name="start_booking">
       <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StateNumber>7879</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <column id="357" parent="286" name="end_booking">
+    <column id="361" parent="287" name="end_booking">
       <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
       <Position>5</Position>
       <StateNumber>7879</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <column id="358" parent="286" name="accommodations_count">
+    <column id="362" parent="287" name="accommodations_count">
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <Position>6</Position>
       <StateNumber>7879</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <foreign-key id="359" parent="286" name="reservations_id_client_fkey">
+    <foreign-key id="363" parent="287" name="reservations_id_client_fkey">
       <ColNames>id_client</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>17475</ObjectId>
@@ -4939,7 +4964,7 @@ pg_catalog</CollationParentNames>
       <RefTableName>clients</RefTableName>
       <RefTableKind>table</RefTableKind>
     </foreign-key>
-    <foreign-key id="360" parent="286" name="reservations_id_type_fkey">
+    <foreign-key id="364" parent="287" name="reservations_id_type_fkey">
       <ColNames>id_type</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>17480</ObjectId>
@@ -4951,7 +4976,7 @@ pg_catalog</CollationParentNames>
       <RefTableName>roomtypes</RefTableName>
       <RefTableKind>table</RefTableKind>
     </foreign-key>
-    <index id="361" parent="286" name="reservations_pkey">
+    <index id="365" parent="287" name="reservations_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>17473</ObjectId>
@@ -4960,20 +4985,20 @@ pg_catalog</CollationParentNames>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="362" parent="286" name="reservations_pkey">
+    <key id="366" parent="287" name="reservations_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>17474</ObjectId>
       <Primary>1</Primary>
       <StateNumber>7879</StateNumber>
       <UnderlyingIndexId>17473</UnderlyingIndexId>
     </key>
-    <check id="363" parent="287" name="rooms_count_rooms_check">
+    <check id="367" parent="288" name="rooms_count_rooms_check">
       <ColNames>count_rooms</ColNames>
       <ObjectId>17387</ObjectId>
       <Predicate>count_rooms &gt; 0</Predicate>
       <StateNumber>7860</StateNumber>
     </check>
-    <column id="364" parent="287" name="id">
+    <column id="368" parent="288" name="id">
       <DataType>integer|0s</DataType>
       <DefaultExpression>nextval(&apos;rooms_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
@@ -4981,35 +5006,35 @@ pg_catalog</CollationParentNames>
       <StateNumber>7860</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="365" parent="287" name="id_hotel">
+    <column id="369" parent="288" name="id_hotel">
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StateNumber>7860</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="366" parent="287" name="id_type">
+    <column id="370" parent="288" name="id_type">
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StateNumber>7860</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="367" parent="287" name="count_rooms">
+    <column id="371" parent="288" name="count_rooms">
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StateNumber>7860</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="368" parent="287" name="status">
+    <column id="372" parent="288" name="status">
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>5</Position>
       <StateNumber>7860</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <foreign-key id="369" parent="287" name="rooms_id_hotel_fkey">
+    <foreign-key id="373" parent="288" name="rooms_id_hotel_fkey">
       <ColNames>id_hotel</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>17390</ObjectId>
@@ -5021,7 +5046,7 @@ pg_catalog</CollationParentNames>
       <RefTableName>hotels</RefTableName>
       <RefTableKind>table</RefTableKind>
     </foreign-key>
-    <foreign-key id="370" parent="287" name="rooms_id_type_fkey">
+    <foreign-key id="374" parent="288" name="rooms_id_type_fkey">
       <ColNames>id_type</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>17395</ObjectId>
@@ -5033,7 +5058,7 @@ pg_catalog</CollationParentNames>
       <RefTableName>roomtypes</RefTableName>
       <RefTableKind>table</RefTableKind>
     </foreign-key>
-    <index id="371" parent="287" name="rooms_pkey">
+    <index id="375" parent="288" name="rooms_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>17388</ObjectId>
@@ -5042,20 +5067,20 @@ pg_catalog</CollationParentNames>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="372" parent="287" name="rooms_pkey">
+    <key id="376" parent="288" name="rooms_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>17389</ObjectId>
       <Primary>1</Primary>
       <StateNumber>7860</StateNumber>
       <UnderlyingIndexId>17388</UnderlyingIndexId>
     </key>
-    <check id="373" parent="288" name="roomtypes_price_check">
+    <check id="377" parent="289" name="roomtypes_price_check">
       <ColNames>price</ColNames>
       <ObjectId>17375</ObjectId>
       <Predicate>price &gt; (0)::numeric</Predicate>
       <StateNumber>7857</StateNumber>
     </check>
-    <column id="374" parent="288" name="id">
+    <column id="378" parent="289" name="id">
       <DataType>integer|0s</DataType>
       <DefaultExpression>nextval(&apos;roomtypes_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
@@ -5063,21 +5088,21 @@ pg_catalog</CollationParentNames>
       <StateNumber>7857</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="375" parent="288" name="name">
+    <column id="379" parent="289" name="name">
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StateNumber>7857</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="376" parent="288" name="price">
+    <column id="380" parent="289" name="price">
       <DataType>numeric|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StateNumber>7857</StateNumber>
       <TypeId>1700</TypeId>
     </column>
-    <index id="377" parent="288" name="roomtypes_pkey">
+    <index id="381" parent="289" name="roomtypes_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>17378</ObjectId>
@@ -5086,7 +5111,7 @@ pg_catalog</CollationParentNames>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <index id="378" parent="288" name="roomtypes_name_key">
+    <index id="382" parent="289" name="roomtypes_name_key">
       <ColNames>name</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>17380</ObjectId>
@@ -5097,26 +5122,26 @@ pg_catalog</CollationParentNames>
       <CollationIds>100</CollationIds>
       <CollationParentNames>pg_catalog</CollationParentNames>
     </index>
-    <key id="379" parent="288" name="roomtypes_pkey">
+    <key id="383" parent="289" name="roomtypes_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>17379</ObjectId>
       <Primary>1</Primary>
       <StateNumber>7857</StateNumber>
       <UnderlyingIndexId>17378</UnderlyingIndexId>
     </key>
-    <key id="380" parent="288" name="roomtypes_name_key">
+    <key id="384" parent="289" name="roomtypes_name_key">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>17381</ObjectId>
       <StateNumber>7857</StateNumber>
       <UnderlyingIndexId>17380</UnderlyingIndexId>
     </key>
-    <check id="381" parent="289" name="services_price_check">
+    <check id="385" parent="290" name="services_price_check">
       <ColNames>price</ColNames>
       <ObjectId>17344</ObjectId>
       <Predicate>price &gt;= (0)::numeric</Predicate>
       <StateNumber>7848</StateNumber>
     </check>
-    <column id="382" parent="289" name="id">
+    <column id="386" parent="290" name="id">
       <DataType>integer|0s</DataType>
       <DefaultExpression>nextval(&apos;services_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
@@ -5124,35 +5149,35 @@ pg_catalog</CollationParentNames>
       <StateNumber>7848</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="383" parent="289" name="name">
+    <column id="387" parent="290" name="name">
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StateNumber>7848</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="384" parent="289" name="description">
+    <column id="388" parent="290" name="description">
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StateNumber>7848</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="385" parent="289" name="available">
+    <column id="389" parent="290" name="available">
       <DataType>boolean|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StateNumber>7848</StateNumber>
       <TypeId>16</TypeId>
     </column>
-    <column id="386" parent="289" name="price">
+    <column id="390" parent="290" name="price">
       <DataType>numeric|0s</DataType>
       <NotNull>1</NotNull>
       <Position>5</Position>
       <StateNumber>7848</StateNumber>
       <TypeId>1700</TypeId>
     </column>
-    <index id="387" parent="289" name="services_pkey">
+    <index id="391" parent="290" name="services_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>17347</ObjectId>
@@ -5161,7 +5186,7 @@ pg_catalog</CollationParentNames>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <index id="388" parent="289" name="unique_services">
+    <index id="392" parent="290" name="unique_services">
       <ColNames>name
 description
 available</ColNames>
@@ -5176,17 +5201,42 @@ default</CollationNames>
       <CollationParentNames>pg_catalog
 pg_catalog</CollationParentNames>
     </index>
-    <key id="389" parent="289" name="services_pkey">
+    <key id="393" parent="290" name="services_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>17348</ObjectId>
       <Primary>1</Primary>
       <StateNumber>7848</StateNumber>
       <UnderlyingIndexId>17347</UnderlyingIndexId>
     </key>
-    <key id="390" parent="289" name="unique_services">
+    <key id="394" parent="290" name="unique_services">
       <ObjectId>17350</ObjectId>
       <StateNumber>7848</StateNumber>
       <UnderlyingIndexId>17349</UnderlyingIndexId>
     </key>
+    <column id="395" parent="291" name="hotel_name">
+      <DataType>varchar(255)|0s</DataType>
+      <Position>1</Position>
+      <StateNumber>8059</StateNumber>
+    </column>
+    <column id="396" parent="291" name="hotel_status">
+      <DataType>varchar(255)|0s</DataType>
+      <Position>2</Position>
+      <StateNumber>8059</StateNumber>
+    </column>
+    <column id="397" parent="291" name="room_id">
+      <DataType>integer|0s</DataType>
+      <Position>3</Position>
+      <StateNumber>8059</StateNumber>
+    </column>
+    <column id="398" parent="291" name="name">
+      <DataType>varchar(255)|0s</DataType>
+      <Position>4</Position>
+      <StateNumber>8059</StateNumber>
+    </column>
+    <column id="399" parent="291" name="room_status">
+      <DataType>varchar(255)|0s</DataType>
+      <Position>5</Position>
+      <StateNumber>8059</StateNumber>
+    </column>
   </database-model>
 </dataSource>

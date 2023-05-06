@@ -5,7 +5,10 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import ru.shchelkin.Frame.admin.AdminMenu;
 import ru.shchelkin.Frame.admin.AdminViewDataFrame;
 import ru.shchelkin.Frame.OperationModeFrame;
-import ru.shchelkin.Frame.UserMenuFrame;
+import ru.shchelkin.Frame.admin.ReportFrame;
+import ru.shchelkin.Frame.admin.SearchFrame;
+import ru.shchelkin.Frame.user.UserMenu;
+import ru.shchelkin.Frame.user.UserViewDataFrame;
 
 public class Program {
 
@@ -20,10 +23,21 @@ public class Program {
         jdbcTemplate.setDataSource(dataSource);
 
         var adminViewData = new AdminViewDataFrame(jdbcTemplate);
-        var adminMenu = new AdminMenu(adminViewData);
+        var reportFrame = new ReportFrame(jdbcTemplate);
+        var searchFrame = new SearchFrame(jdbcTemplate);
+        var adminMenu = new AdminMenu(adminViewData, reportFrame, searchFrame);
         adminViewData.setParentFrame(adminMenu);
+        reportFrame.setParentFrame(adminMenu);
+        searchFrame.setParentFrame(adminMenu);
 
-        var userMenu = new UserMenuFrame();
+
+        var userViewData = new UserViewDataFrame(jdbcTemplate);
+        var userReportFrame = new ReportFrame(jdbcTemplate);
+        var userSearchFrame = new SearchFrame(jdbcTemplate);
+        var userMenu = new UserMenu(userViewData, userReportFrame, userSearchFrame);
+        userViewData.setParentFrame(userMenu);
+        userReportFrame.setParentFrame(userMenu);
+        userSearchFrame.setParentFrame(userMenu);
 
         var operationMode = new OperationModeFrame(adminMenu, userMenu);
         adminMenu.setParentFrame(operationMode);

@@ -2,7 +2,7 @@ package ru.shchelkin.Frame.user;
 
 import ru.shchelkin.Frame.BackButtonFrame;
 import ru.shchelkin.Frame.admin.ReportFrame;
-import ru.shchelkin.Frame.admin.SearchFrame;
+import ru.shchelkin.Frame.admin.SearchClientFrame;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -10,17 +10,17 @@ import java.awt.*;
 import java.util.Objects;
 
 public class UserMenu extends BackButtonFrame {
-    public static final String title = "Админ меню";
+    public static final String title = "Пользовательское меню";
 
     private static final JButton showTables = new JButton("Показать доступные справочники");
-    private static final JButton showReport = new JButton("Посомтреть отчёты");
-    private static final JButton searchClient = new JButton("Поиск активных бронирований");
+    private static final JButton showReport = new JButton("Посмотреть отчёты");
+    private static final JButton searchClient = new JButton("Поиск отеля");
 
     private final UserViewDataFrame viewDataFrame;
     private final ReportFrame reportFrame;
-    private final SearchFrame searchFrame;
+    private final SearchClientFrame searchClientFrame;
 
-    public UserMenu(UserViewDataFrame viewDataFrame, ReportFrame reportFrame, SearchFrame searchFrame) throws HeadlessException {
+    public UserMenu(UserViewDataFrame viewDataFrame, ReportFrame reportFrame, SearchClientFrame searchClientFrame) throws HeadlessException {
         super(title);
         setSize(700, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -36,7 +36,7 @@ public class UserMenu extends BackButtonFrame {
         Objects.requireNonNull(reportFrame);
         this.reportFrame = reportFrame;
         Objects.requireNonNull(viewDataFrame);
-        this.searchFrame = searchFrame;
+        this.searchClientFrame = searchClientFrame;
 
         AddButtons(panel);
     }
@@ -44,7 +44,7 @@ public class UserMenu extends BackButtonFrame {
     private void AddButtons(JPanel panel) {
         showFrameOnClick(showTables, viewDataFrame);
         showFrameOnClick(showReport, reportFrame);
-        showFrameOnClick(searchClient, searchFrame);
+        showFrameOnClick(searchClient, searchClientFrame);
 
         panel.add(showTables);
         panel.add(showReport);

@@ -4,6 +4,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import ru.shchelkin.Frame.BackButtonFrame;
 import ru.shchelkin.model.HotelsInfo;
+import ru.shchelkin.util.EntityTable;
 
 import javax.swing.*;
 import javax.swing.table.TableModel;
@@ -26,7 +27,7 @@ public class ReportFrame extends BackButtonFrame {
     }
 
     private void showTable(List<HotelsInfo> data) {
-        AdminViewDataFrame.CustomTable<HotelsInfo> table = new AdminViewDataFrame.CustomTable<>(HotelsInfo.class, data);
+        EntityTable<HotelsInfo> table = new EntityTable<>(HotelsInfo.class, data);
 
         TableRowSorter<TableModel> sorter = new TableRowSorter<>(table.getModel()); // создаем TableRowSorter
 

@@ -18,7 +18,7 @@ import java.util.stream.IntStream;
 
 public class UserViewDataFrame extends BackButtonFrame {
     private final Map<String, Dao<?>> daoMap = new LinkedHashMap<>();
-    private JComboBox<String> tableSelector;
+    private final JComboBox<String> tableSelector;
 
     public UserViewDataFrame(JdbcTemplate jdbcTemplate) {
         super("Просмотр справочников");

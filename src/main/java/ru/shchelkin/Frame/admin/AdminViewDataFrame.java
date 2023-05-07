@@ -5,21 +5,20 @@ import ru.shchelkin.Frame.BackButtonFrame;
 import ru.shchelkin.dao.Dao;
 import ru.shchelkin.model.*;
 import ru.shchelkin.util.EditDialog;
+import ru.shchelkin.util.EntityTable;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import java.awt.*;
-import java.lang.reflect.Field;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.stream.IntStream;
+import java.util.Map;
 
 public class AdminViewDataFrame extends BackButtonFrame {
     private final Map<String, Dao<?>> daoMap = new LinkedHashMap<>();
-    private JComboBox<String> tableSelector;
+    private final JComboBox<String> tableSelector;
 
     public AdminViewDataFrame(JdbcTemplate jdbcTemplate) {
         super("Просмотр справочников");
@@ -52,10 +51,9 @@ public class AdminViewDataFrame extends BackButtonFrame {
 
     private <T> void showTable(Dao<T> dao) {
         List<T> data = dao.getAll();
-        CustomTable<T> table = new CustomTable<>(dao.getObjectClass(), data);
+        EntityTable<T> table = new EntityTable<>(dao.getObjectClass(), data);
 
         TableRowSorter<TableModel> sorter = new TableRowSorter<>(table.getModel()); // создаем TableRowSorter
-
         List<RowSorter.SortKey> sortKeys = new ArrayList<>(); // создаем список SortKey для сортировки по первой колонке
         sortKeys.add(new RowSorter.SortKey(0, SortOrder.ASCENDING));
         sorter.setSortKeys(sortKeys); // устанавливаем список SortKey для TableRowSorter
@@ -67,8 +65,8 @@ public class AdminViewDataFrame extends BackButtonFrame {
         JButton updateButton = new JButton("Update");
         JButton deleteButton = new JButton("Delete");
         updateButton.addActionListener(e -> {
-            int selectedViewRow  = table.getSelectedRow();
-            if (selectedViewRow  != -1) {
+            int selectedViewRow = table.getSelectedRow();
+            if (selectedViewRow != -1) {
                 int modelRow = table.convertRowIndexToModel(selectedViewRow);
                 T selectedItem = data.get(modelRow);
                 EditDialog<T> dialog = new EditDialog<>(this, selectedItem);
@@ -85,7 +83,10 @@ public class AdminViewDataFrame extends BackButtonFrame {
             if (selectedViewRow != -1) {
                 int modelRow = table.convertRowIndexToModel(selectedViewRow);
                 T selectedItem = data.get(modelRow);
-                int option = JOptionPane.showConfirmDialog(this, "Вы действительно хотите удалить запись?", "Удаление", JOptionPane.YES_NO_OPTION);
+                int option = JOptionPane.showConfirmDialog(this,
+                        "Вы действительно хотите удалить запись?",
+                        "Удаление",
+                        JOptionPane.YES_NO_OPTION);
                 if (option == JOptionPane.YES_OPTION) {
                     dao.delete(selectedItem);
                     showTable(dao);
@@ -95,86 +96,12 @@ public class AdminViewDataFrame extends BackButtonFrame {
         JPanel buttonPanel = new JPanel();
         buttonPanel.add(updateButton);
         buttonPanel.add(deleteButton);
+
         rightPanel.removeAll();
         rightPanel.setLayout(new BorderLayout());
         rightPanel.add(scrollPane, BorderLayout.CENTER);
         rightPanel.add(buttonPanel, BorderLayout.SOUTH);
         rightPanel.revalidate();
         rightPanel.repaint();
-    }
-
-    public static class CustomTable<T> extends JTable {
-        private final DefaultTableModel tableModel;
-        private List<T> data;
-        private final Field[] fields;
-
-        public CustomTable(Class<T> clazz, List<T> data) {
-            this.data = data;
-            this.fields = clazz.getDeclaredFields();
-            tableModel = new CustomTableModel(fields, getRowsData());
-            setModel(tableModel);
-            setAutoCreateRowSorter(true);
-            setFillsViewportHeight(true);
-            setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        }
-
-        public void setData(List<T> newData) {
-            this.data = newData;
-            tableModel.setRowCount(0);
-            for (T item : newData) {
-                tableModel.addRow(getRowData(item));
-            }
-        }
-
-        private Object prepareCellValue(Object value) {
-            if (value instanceof String && ((String) value).matches("\\d+,*\\d*")) {
-                value = Double.parseDouble(((String) value).replace(",", "."));
-            }
-            return value;
-        }
-
-        private Object[] getRowData(T item) {
-            Object[] rowData = new Object[fields.length];
-            IntStream.range(0, fields.length)
-                    .forEach(i -> {
-                        fields[i].setAccessible(true);
-                        try {
-                            rowData[i] = prepareCellValue(fields[i].get(item));
-                        } catch (IllegalAccessException e) {
-                            e.printStackTrace();
-                        }
-                    });
-            return rowData;
-        }
-
-        private Object[][] getRowsData() {
-            return data.stream()
-                    .map(this::getRowData)
-                    .toArray(Object[][]::new);
-        }
-
-        public void fireTableDataChanged() {
-            tableModel.fireTableDataChanged();
-        }
-
-        @Override
-        public boolean isCellEditable(int row, int column) {
-            return false;
-        }
-
-        public static class CustomTableModel extends DefaultTableModel {
-            private final Field[] fields;
-
-            public CustomTableModel(Field[] fields, Object[][] rowData) {
-                super(rowData, getColumnNames(fields));
-                this.fields = fields;
-            }
-
-            private static String[] getColumnNames(Field[] fields) {
-                return Arrays.stream(fields)
-                        .map(Field::getName)
-                        .toArray(String[]::new);
-            }
-        }
     }
 }

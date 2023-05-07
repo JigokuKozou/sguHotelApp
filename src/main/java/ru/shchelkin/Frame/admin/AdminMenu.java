@@ -11,14 +11,14 @@ public class AdminMenu extends BackButtonFrame {
     public static final String title = "Админ меню";
 
     private static final JButton showTables = new JButton("Показать доступные справочники");
-    private static final JButton showReport = new JButton("Посомтреть отчёты");
-    private static final JButton searchClient = new JButton("Поиск активных бронирований");
+    private static final JButton showReport = new JButton("Посмотреть отчёты");
+    private static final JButton searchClient = new JButton("Поиск клиента");
 
     private final AdminViewDataFrame viewDataFrame;
     private final ReportFrame reportFrame;
-    private final SearchFrame searchFrame;
+    private final SearchClientFrame searchClientFrame;
 
-    public AdminMenu(AdminViewDataFrame viewDataFrame, ReportFrame reportFrame, SearchFrame searchFrame) throws HeadlessException {
+    public AdminMenu(AdminViewDataFrame viewDataFrame, ReportFrame reportFrame, SearchClientFrame searchClientFrame) throws HeadlessException {
         super(title);
         setSize(700, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -34,7 +34,7 @@ public class AdminMenu extends BackButtonFrame {
         Objects.requireNonNull(reportFrame);
         this.reportFrame = reportFrame;
         Objects.requireNonNull(viewDataFrame);
-        this.searchFrame = searchFrame;
+        this.searchClientFrame = searchClientFrame;
 
         AddButtons(panel);
     }
@@ -42,7 +42,7 @@ public class AdminMenu extends BackButtonFrame {
     private void AddButtons(JPanel panel) {
         showFrameOnClick(showTables, viewDataFrame);
         showFrameOnClick(showReport, reportFrame);
-        showFrameOnClick(searchClient, searchFrame);
+        showFrameOnClick(searchClient, searchClientFrame);
 
         panel.add(showTables);
         panel.add(showReport);

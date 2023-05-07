@@ -4,19 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dafe817d-3d69-49cd-90ec-7c30300a2621" name="Changes" comment="fixed">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Frame/admin/ReportFrame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Frame/admin/SearchFrame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Frame/user/UserMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Frame/user/UserViewDataFrame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/model/HotelsInfo.java" afterDir="false" />
+    <list default="true" id="dafe817d-3d69-49cd-90ec-7c30300a2621" name="Changes" comment="added search and reports">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Frame/admin/SearchClientFrame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/util/EntityTable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/44cc86de-270c-4350-88ef-6de9279f0d99.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/44cc86de-270c-4350-88ef-6de9279f0d99.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/44cc86de-270c-4350-88ef-6de9279f0d99/storage_v2/_src_/database/HotelDB.EsW8pA/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/44cc86de-270c-4350-88ef-6de9279f0d99/storage_v2/_src_/database/HotelDB.EsW8pA/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Frame/UserMenuFrame.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Frame/admin/AdminMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Frame/admin/AdminMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Frame/admin/AdminViewDataFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Frame/admin/AdminViewDataFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Frame/admin/ReportFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Frame/admin/ReportFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Frame/admin/SearchFrame.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Frame/user/UserMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Frame/user/UserMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Frame/user/UserViewDataFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Frame/user/UserViewDataFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Program.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/shchelkin/util/EditDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/util/EditDialog.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,11 +92,13 @@
   &quot;keyToString&quot;: {
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_directory_selection&quot;: &quot;C:/Users/ilyas/IdeaProjects/hotelApp/src/main/java/ru/shchelkin/util&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/ilyas/IdeaProjects/hotelApp&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
     &quot;spring.configuration.checksum&quot;: &quot;5ebfa92fc1bb9d18cdf350de1d80d809&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -108,6 +112,9 @@
       <recent name="ru.shchelkin.Frame.user" />
       <recent name="ru.shchelkin" />
       <recent name="ru.shchelkin.Frame.interfaces" />
+    </key>
+    <key name="MoveInnerDialog.RECENTS_KEY">
+      <recent name="ru.shchelkin.util" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Program">
@@ -240,6 +247,10 @@
       <workItem from="1683231781836" duration="5766000" />
       <workItem from="1683274802402" duration="26995000" />
       <workItem from="1683344071900" duration="6624000" />
+      <workItem from="1683360161748" duration="1701000" />
+      <workItem from="1683370243984" duration="1491000" />
+      <workItem from="1683374282300" duration="5160000" />
+      <workItem from="1683459645522" duration="1644000" />
     </task>
     <task id="LOCAL-00001" summary="viewData">
       <created>1683289550817</created>
@@ -318,6 +329,7 @@
     <MESSAGE value="now editable" />
     <MESSAGE value="refresable" />
     <MESSAGE value="fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed" />
+    <MESSAGE value="added search and reports" />
+    <option name="LAST_COMMIT_MESSAGE" value="added search and reports" />
   </component>
 </project>

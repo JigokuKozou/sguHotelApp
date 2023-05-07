@@ -6,7 +6,7 @@ import ru.shchelkin.Frame.admin.AdminMenu;
 import ru.shchelkin.Frame.admin.AdminViewDataFrame;
 import ru.shchelkin.Frame.OperationModeFrame;
 import ru.shchelkin.Frame.admin.ReportFrame;
-import ru.shchelkin.Frame.admin.SearchFrame;
+import ru.shchelkin.Frame.admin.SearchClientFrame;
 import ru.shchelkin.Frame.user.UserMenu;
 import ru.shchelkin.Frame.user.UserViewDataFrame;
 
@@ -24,7 +24,7 @@ public class Program {
 
         var adminViewData = new AdminViewDataFrame(jdbcTemplate);
         var reportFrame = new ReportFrame(jdbcTemplate);
-        var searchFrame = new SearchFrame(jdbcTemplate);
+        var searchFrame = new SearchClientFrame(jdbcTemplate);
         var adminMenu = new AdminMenu(adminViewData, reportFrame, searchFrame);
         adminViewData.setParentFrame(adminMenu);
         reportFrame.setParentFrame(adminMenu);
@@ -33,7 +33,7 @@ public class Program {
 
         var userViewData = new UserViewDataFrame(jdbcTemplate);
         var userReportFrame = new ReportFrame(jdbcTemplate);
-        var userSearchFrame = new SearchFrame(jdbcTemplate);
+        var userSearchFrame = new SearchClientFrame(jdbcTemplate);
         var userMenu = new UserMenu(userViewData, userReportFrame, userSearchFrame);
         userViewData.setParentFrame(userMenu);
         userReportFrame.setParentFrame(userMenu);

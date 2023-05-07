@@ -11,9 +11,9 @@ import java.time.format.DateTimeFormatter;
 
 public class EditDialog<T> extends JDialog {
 
-    private JPanel contentPanel;
-    private JButton okButton;
-    private JButton cancelButton;
+    private final JPanel contentPanel;
+    private final JButton okButton;
+    private final JButton cancelButton;
     private T item;
     private boolean isConfirmed;
 

@@ -1,8 +1,7 @@
 package ru.shchelkin.Frame.user;
 
 import ru.shchelkin.Frame.BackButtonFrame;
-import ru.shchelkin.Frame.admin.ReportFrame;
-import ru.shchelkin.Frame.admin.SearchClientFrame;
+import ru.shchelkin.Frame.ReportFrame;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,9 +16,9 @@ public class UserMenu extends BackButtonFrame {
 
     private final UserViewDataFrame viewDataFrame;
     private final ReportFrame reportFrame;
-    private final SearchClientFrame searchHotelFrame;
+    private final SearchHotelFrame searchHotelFrame;
 
-    public UserMenu(UserViewDataFrame viewDataFrame, ReportFrame reportFrame, SearchClientFrame searchHotelFrame) throws HeadlessException {
+    public UserMenu(UserViewDataFrame viewDataFrame, ReportFrame reportFrame, SearchHotelFrame searchHotelFrame) throws HeadlessException {
         super(title);
         setSize(400, 250);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

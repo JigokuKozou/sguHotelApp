@@ -1,9 +1,7 @@
-package ru.shchelkin.Frame.admin;
+package ru.shchelkin.Frame;
 
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
-import ru.shchelkin.Frame.BackButtonFrame;
-import ru.shchelkin.model.HotelsInfo;
 import ru.shchelkin.util.EntityTable;
 
 import javax.swing.*;
@@ -12,23 +10,36 @@ import javax.swing.table.TableRowSorter;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class ReportFrame extends BackButtonFrame {
-    public ReportFrame(JdbcTemplate jdbcTemplate) {
-        super("Информация об отелях");
+    private final JComboBox<String> tableSelector;
 
+    private final JdbcTemplate jdbcTemplate;
 
-        showTable(getReportData(jdbcTemplate));
+    public ReportFrame(JdbcTemplate jdbcTemplate, Map<String, Class<?>> views) {
+        super("Отчёты");
+        this.jdbcTemplate = jdbcTemplate;
+
+        tableSelector = new JComboBox<>(views.keySet().toArray(new String[0]));
+        tableSelector.addActionListener(e -> {
+            String viewName = (String) tableSelector.getSelectedItem();
+            if (viewName != null) {
+                showTable(getReportData(viewName, views.get(viewName)), views.get(viewName));
+            }
+        });
+
+        leftPanel.add(tableSelector, BorderLayout.NORTH);
     }
 
-    public List<HotelsInfo> getReportData(JdbcTemplate jdbcTemplate) {
+    public <T> List<T> getReportData(String viewName, Class<T> clazz) {
         return jdbcTemplate.query(
-                "SELECT * FROM HotelsInfo",
-                new BeanPropertyRowMapper<>(HotelsInfo.class));
+                "SELECT * FROM " + viewName,
+                new BeanPropertyRowMapper<>(clazz));
     }
 
-    private void showTable(List<HotelsInfo> data) {
-        EntityTable<HotelsInfo> table = new EntityTable<>(HotelsInfo.class, data);
+    private <T> void showTable(List<T> data, Class clazz) {
+        EntityTable<T> table = new EntityTable<>(clazz, data);
 
         TableRowSorter<TableModel> sorter = new TableRowSorter<>(table.getModel()); // создаем TableRowSorter
 

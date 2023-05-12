@@ -1,6 +1,7 @@
 package ru.shchelkin.Frame.admin;
 
 import ru.shchelkin.Frame.BackButtonFrame;
+import ru.shchelkin.Frame.ReportFrame;
 
 import javax.swing.*;
 import java.awt.*;

@@ -71,7 +71,12 @@ public class SearchClientFrame extends BackButtonFrame {
         EntityTable<Client> table = new EntityTable<>(Client.class, data);
 
         TableRowSorter<TableModel> sorter = new TableRowSorter<>(table.getModel()); // создаем TableRowSorter
+        sorter.setComparator(0, (x, y) -> {
+            int xInt = Integer.parseInt(x.toString());
+            int yInt = Integer.parseInt(y.toString());
 
+            return Integer.compare(xInt, yInt);
+        });
         List<RowSorter.SortKey> sortKeys = new ArrayList<>(); // создаем список SortKey для сортировки по первой колонке
         sortKeys.add(new RowSorter.SortKey(0, SortOrder.ASCENDING));
         sorter.setSortKeys(sortKeys); // устанавливаем список SortKey для TableRowSorter

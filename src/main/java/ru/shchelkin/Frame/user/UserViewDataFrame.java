@@ -5,16 +5,16 @@ import ru.shchelkin.Frame.BackButtonFrame;
 import ru.shchelkin.dao.Dao;
 import ru.shchelkin.model.Client;
 import ru.shchelkin.util.EditDialog;
+import ru.shchelkin.util.EntityTable;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import java.awt.*;
-import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.*;
-import java.util.stream.IntStream;
+import java.util.Map;
 
 public class UserViewDataFrame extends BackButtonFrame {
     private final Map<String, Dao<?>> daoMap = new LinkedHashMap<>();
@@ -42,10 +42,15 @@ public class UserViewDataFrame extends BackButtonFrame {
 
     private <T> void showTable(Dao<T> dao) {
         List<T> data = dao.getAll();
-        CustomTable<T> table = new CustomTable<>(dao.getObjectClass(), data);
+        EntityTable<T> table = new EntityTable<>(dao.getObjectClass(), data);
 
         TableRowSorter<TableModel> sorter = new TableRowSorter<>(table.getModel()); // создаем TableRowSorter
+        sorter.setComparator(0, (x, y) -> {
+            int xInt = Integer.parseInt(x.toString());
+            int yInt = Integer.parseInt(y.toString());
 
+            return Integer.compare(xInt, yInt);
+        });
         List<RowSorter.SortKey> sortKeys = new ArrayList<>(); // создаем список SortKey для сортировки по первой колонке
         sortKeys.add(new RowSorter.SortKey(0, SortOrder.ASCENDING));
         sorter.setSortKeys(sortKeys); // устанавливаем список SortKey для TableRowSorter
@@ -53,6 +58,22 @@ public class UserViewDataFrame extends BackButtonFrame {
         table.setRowSorter(sorter); // устанавливаем TableRowSorter на таблицу
 
         JScrollPane scrollPane = new JScrollPane(table);
+
+        JButton insertButton = new JButton("Insert");
+        insertButton.addActionListener(e -> {
+            EditDialog<T> dialog = null;
+            try {
+                dialog = new EditDialog<>(this, dao.getObjectClass().newInstance());
+            } catch (InstantiationException | IllegalAccessException ex) {
+                ex.printStackTrace();
+            }
+            dialog.setVisible(true);
+            if (dialog.isConfirmed()) {
+                T insertedItem = dialog.getItem();
+                dao.save(insertedItem);
+                showTable(dao);
+            }
+        });
 
         JButton updateButton = new JButton("Update");
         JButton deleteButton = new JButton("Delete");
@@ -83,6 +104,7 @@ public class UserViewDataFrame extends BackButtonFrame {
             }
         });
         JPanel buttonPanel = new JPanel();
+        buttonPanel.add(insertButton);
         // buttonPanel.add(updateButton);
         // buttonPanel.add(deleteButton);
         rightPanel.removeAll();
@@ -93,73 +115,16 @@ public class UserViewDataFrame extends BackButtonFrame {
         rightPanel.repaint();
     }
 
-    public static class CustomTable<T> extends JTable {
-        private final DefaultTableModel tableModel;
-        private final Field[] fields;
-        private List<T> data;
-
-        public CustomTable(Class<T> clazz, List<T> data) {
-            this.data = data;
-            this.fields = clazz.getDeclaredFields();
-            tableModel = new CustomTableModel(fields, getRowsData());
-            setModel(tableModel);
-            setAutoCreateRowSorter(true);
-            setFillsViewportHeight(true);
-            setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        }
-
-        public void setData(List<T> newData) {
-            this.data = newData;
-            tableModel.setRowCount(0);
-            for (T item : newData) {
-                tableModel.addRow(getRowData(item));
-            }
-        }
-
-        private Object prepareCellValue(Object value) {
-            if (value instanceof String && ((String) value).matches("\\d+,*\\d*")) {
-                value = Double.parseDouble(((String) value).replace(",", "."));
-            }
-            return value;
-        }
-
-        private Object[] getRowData(T item) {
-            Object[] rowData = new Object[fields.length];
-            IntStream.range(0, fields.length)
-                    .forEach(i -> {
-                        fields[i].setAccessible(true);
-                        try {
-                            rowData[i] = prepareCellValue(fields[i].get(item));
-                        } catch (IllegalAccessException e) {
-                            e.printStackTrace();
-                        }
-                    });
-            return rowData;
-        }
-
-        private Object[][] getRowsData() {
-            return data.stream()
-                    .map(this::getRowData)
-                    .toArray(Object[][]::new);
-        }
-
-        @Override
-        public boolean isCellEditable(int row, int column) {
-            return false;
-        }
-
-        public static class CustomTableModel extends DefaultTableModel {
-            private final Field[] fields;
-
-            public CustomTableModel(Field[] fields, Object[][] rowData) {
-                super(rowData, getColumnNames(fields));
-                this.fields = fields;
-            }
-
-            private static String[] getColumnNames(Field[] fields) {
-                return Arrays.stream(fields)
-                        .map(Field::getName)
-                        .toArray(String[]::new);
+    @Override
+    public void setVisible(boolean b) {
+        super.setVisible(b);
+        if (b) {
+            String tableName = (String) tableSelector.getSelectedItem();
+            if (tableName != null) {
+                Dao<?> dao = daoMap.get(tableName);
+                if (dao != null) {
+                    showTable(dao);
+                }
             }
         }
     }

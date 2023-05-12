@@ -54,6 +54,12 @@ public class AdminViewDataFrame extends BackButtonFrame {
         EntityTable<T> table = new EntityTable<>(dao.getObjectClass(), data);
 
         TableRowSorter<TableModel> sorter = new TableRowSorter<>(table.getModel()); // создаем TableRowSorter
+        sorter.setComparator(0, (x, y) -> {
+            int xInt = Integer.parseInt(x.toString());
+            int yInt = Integer.parseInt(y.toString());
+
+            return Integer.compare(xInt, yInt);
+        });
         List<RowSorter.SortKey> sortKeys = new ArrayList<>(); // создаем список SortKey для сортировки по первой колонке
         sortKeys.add(new RowSorter.SortKey(0, SortOrder.ASCENDING));
         sorter.setSortKeys(sortKeys); // устанавливаем список SortKey для TableRowSorter
@@ -61,6 +67,22 @@ public class AdminViewDataFrame extends BackButtonFrame {
         table.setRowSorter(sorter); // устанавливаем TableRowSorter на таблицу
 
         JScrollPane scrollPane = new JScrollPane(table);
+
+        JButton insertButton = new JButton("Insert");
+        insertButton.addActionListener(e -> {
+            EditDialog<T> dialog = null;
+            try {
+                dialog = new EditDialog<>(this, dao.getObjectClass().newInstance());
+            } catch (InstantiationException | IllegalAccessException ex) {
+                ex.printStackTrace();
+            }
+            dialog.setVisible(true);
+            if (dialog.isConfirmed()) {
+                T insertedItem = dialog.getItem();
+                dao.save(insertedItem);
+                showTable(dao);
+            }
+        });
 
         JButton updateButton = new JButton("Update");
         JButton deleteButton = new JButton("Delete");
@@ -94,6 +116,7 @@ public class AdminViewDataFrame extends BackButtonFrame {
             }
         });
         JPanel buttonPanel = new JPanel();
+        buttonPanel.add(insertButton);
         buttonPanel.add(updateButton);
         buttonPanel.add(deleteButton);
 
@@ -103,5 +126,19 @@ public class AdminViewDataFrame extends BackButtonFrame {
         rightPanel.add(buttonPanel, BorderLayout.SOUTH);
         rightPanel.revalidate();
         rightPanel.repaint();
+    }
+
+    @Override
+    public void setVisible(boolean b) {
+        super.setVisible(b);
+        if (b) {
+            String tableName = (String) tableSelector.getSelectedItem();
+            if (tableName != null) {
+                Dao<?> dao = daoMap.get(tableName);
+                if (dao != null) {
+                    showTable(dao);
+                }
+            }
+        }
     }
 }

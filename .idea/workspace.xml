@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dafe817d-3d69-49cd-90ec-7c30300a2621" name="Changes" comment="new UI">
+    <list default="true" id="dafe817d-3d69-49cd-90ec-7c30300a2621" name="Changes" comment="ignore .idea">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Frame/admin/AdminViewDataFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Frame/admin/AdminViewDataFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Frame/user/UserViewDataFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Frame/user/UserViewDataFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -238,7 +240,7 @@
       <workItem from="1683370243984" duration="1491000" />
       <workItem from="1683374282300" duration="5160000" />
       <workItem from="1683459645522" duration="3055000" />
-      <workItem from="1683884762464" duration="419000" />
+      <workItem from="1683884762464" duration="1979000" />
     </task>
     <task id="LOCAL-00001" summary="viewData">
       <created>1683289550817</created>
@@ -296,7 +298,21 @@
       <option name="project" value="LOCAL" />
       <updated>1683885100870</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="disable update and delete buttons">
+      <created>1683885223013</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1683885223013</updated>
+    </task>
+    <task id="LOCAL-00010" summary="ignore .idea">
+      <created>1683885270369</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1683885270369</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -333,6 +349,8 @@
     <MESSAGE value="fixed" />
     <MESSAGE value="added search and reports" />
     <MESSAGE value="new UI" />
-    <option name="LAST_COMMIT_MESSAGE" value="new UI" />
+    <MESSAGE value="disable update and delete buttons" />
+    <MESSAGE value="ignore .idea" />
+    <option name="LAST_COMMIT_MESSAGE" value="ignore .idea" />
   </component>
 </project>

@@ -3,7 +3,7 @@ package ru.shchelkin.Frame.user;
 import org.springframework.jdbc.core.JdbcTemplate;
 import ru.shchelkin.Frame.BackButtonFrame;
 import ru.shchelkin.dao.Dao;
-import ru.shchelkin.model.*;
+import ru.shchelkin.model.Client;
 import ru.shchelkin.util.EditDialog;
 
 import javax.swing.*;
@@ -57,8 +57,8 @@ public class UserViewDataFrame extends BackButtonFrame {
         JButton updateButton = new JButton("Update");
         JButton deleteButton = new JButton("Delete");
         updateButton.addActionListener(e -> {
-            int selectedViewRow  = table.getSelectedRow();
-            if (selectedViewRow  != -1) {
+            int selectedViewRow = table.getSelectedRow();
+            if (selectedViewRow != -1) {
                 int modelRow = table.convertRowIndexToModel(selectedViewRow);
                 T selectedItem = data.get(modelRow);
                 EditDialog<T> dialog = new EditDialog<>(this, selectedItem);
@@ -95,8 +95,8 @@ public class UserViewDataFrame extends BackButtonFrame {
 
     public static class CustomTable<T> extends JTable {
         private final DefaultTableModel tableModel;
-        private List<T> data;
         private final Field[] fields;
+        private List<T> data;
 
         public CustomTable(Class<T> clazz, List<T> data) {
             this.data = data;
@@ -141,10 +141,6 @@ public class UserViewDataFrame extends BackButtonFrame {
             return data.stream()
                     .map(this::getRowData)
                     .toArray(Object[][]::new);
-        }
-
-        public void fireTableDataChanged() {
-            tableModel.fireTableDataChanged();
         }
 
         @Override

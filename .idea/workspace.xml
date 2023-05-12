@@ -5,20 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dafe817d-3d69-49cd-90ec-7c30300a2621" name="Changes" comment="added search and reports">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Frame/admin/SearchClientFrame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/util/EntityTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/44cc86de-270c-4350-88ef-6de9279f0d99.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/44cc86de-270c-4350-88ef-6de9279f0d99.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/44cc86de-270c-4350-88ef-6de9279f0d99/storage_v2/_src_/database/HotelDB.EsW8pA/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/44cc86de-270c-4350-88ef-6de9279f0d99/storage_v2/_src_/database/HotelDB.EsW8pA/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Frame/BackButtonFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Frame/BackButtonFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Frame/admin/AdminMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Frame/admin/AdminMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Frame/admin/AdminViewDataFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Frame/admin/AdminViewDataFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Frame/admin/ReportFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Frame/admin/ReportFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Frame/admin/SearchFrame.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Frame/admin/SearchClientFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Frame/admin/SearchClientFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Frame/user/UserMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Frame/user/UserMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Frame/user/UserViewDataFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Frame/user/UserViewDataFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/Program.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/shchelkin/util/EditDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/util/EditDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/shchelkin/util/EntityTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/shchelkin/util/EntityTable.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -250,7 +245,8 @@
       <workItem from="1683360161748" duration="1701000" />
       <workItem from="1683370243984" duration="1491000" />
       <workItem from="1683374282300" duration="5160000" />
-      <workItem from="1683459645522" duration="1644000" />
+      <workItem from="1683459645522" duration="3055000" />
+      <workItem from="1683884762464" duration="332000" />
     </task>
     <task id="LOCAL-00001" summary="viewData">
       <created>1683289550817</created>
@@ -294,7 +290,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683300465781</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="added search and reports">
+      <created>1683461714556</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1683461714556</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

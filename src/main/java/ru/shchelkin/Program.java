@@ -2,9 +2,9 @@ package ru.shchelkin;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import ru.shchelkin.Frame.OperationModeFrame;
 import ru.shchelkin.Frame.admin.AdminMenu;
 import ru.shchelkin.Frame.admin.AdminViewDataFrame;
-import ru.shchelkin.Frame.OperationModeFrame;
 import ru.shchelkin.Frame.admin.ReportFrame;
 import ru.shchelkin.Frame.admin.SearchClientFrame;
 import ru.shchelkin.Frame.user.UserMenu;

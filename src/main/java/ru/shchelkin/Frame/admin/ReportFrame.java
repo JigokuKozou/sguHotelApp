@@ -20,6 +20,7 @@ public class ReportFrame extends BackButtonFrame {
 
         showTable(getReportData(jdbcTemplate));
     }
+
     public List<HotelsInfo> getReportData(JdbcTemplate jdbcTemplate) {
         return jdbcTemplate.query(
                 "SELECT * FROM HotelsInfo",

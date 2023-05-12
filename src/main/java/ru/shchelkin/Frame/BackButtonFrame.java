@@ -7,10 +7,9 @@ import java.util.Arrays;
 
 public abstract class BackButtonFrame extends JFrame {
     private final JButton backButton = new JButton("< Назад");
-    private JFrame parentFrame;
-
     protected JPanel leftPanel = new JPanel();
     protected JPanel rightPanel = new JPanel();
+    private JFrame parentFrame;
 
     public BackButtonFrame(String title) {
         super(title);
@@ -21,7 +20,7 @@ public abstract class BackButtonFrame extends JFrame {
 
         JPanel backButtonPanel = new JPanel();
         backButton.setPreferredSize(new Dimension(80, 30));
-        backButtonPanel.setBorder(new EmptyBorder(5,10,5,10));
+        backButtonPanel.setBorder(new EmptyBorder(5, 10, 5, 10));
         backButtonPanel.add(backButton);
 
         var c = new GridBagConstraints();

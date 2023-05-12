@@ -5,7 +5,6 @@ import ru.shchelkin.Frame.admin.ReportFrame;
 import ru.shchelkin.Frame.admin.SearchClientFrame;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.util.Objects;
 
@@ -14,43 +13,39 @@ public class UserMenu extends BackButtonFrame {
 
     private static final JButton showTables = new JButton("Показать доступные справочники");
     private static final JButton showReport = new JButton("Посмотреть отчёты");
-    private static final JButton searchClient = new JButton("Поиск отеля");
+    private static final JButton searchHotel = new JButton("Поиск отеля");
 
     private final UserViewDataFrame viewDataFrame;
     private final ReportFrame reportFrame;
-    private final SearchClientFrame searchClientFrame;
+    private final SearchClientFrame searchHotelFrame;
 
-    public UserMenu(UserViewDataFrame viewDataFrame, ReportFrame reportFrame, SearchClientFrame searchClientFrame) throws HeadlessException {
+    public UserMenu(UserViewDataFrame viewDataFrame, ReportFrame reportFrame, SearchClientFrame searchHotelFrame) throws HeadlessException {
         super(title);
-        setSize(700, 400);
+        setSize(400, 250);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
         int buttonMargin = 10;
-        int borderMargin = 20;
-        JPanel panel = new JPanel(new GridLayout(2, 1, buttonMargin, buttonMargin));
-        panel.setBorder(new EmptyBorder(borderMargin, borderMargin, borderMargin, borderMargin));
+        rightPanel.setLayout(new GridLayout(3, 1, buttonMargin, buttonMargin));
 
         Objects.requireNonNull(viewDataFrame);
         this.viewDataFrame = viewDataFrame;
         Objects.requireNonNull(reportFrame);
         this.reportFrame = reportFrame;
         Objects.requireNonNull(viewDataFrame);
-        this.searchClientFrame = searchClientFrame;
+        this.searchHotelFrame = searchHotelFrame;
 
-        AddButtons(panel);
+        AddButtons();
     }
 
-    private void AddButtons(JPanel panel) {
+    private void AddButtons() {
         showFrameOnClick(showTables, viewDataFrame);
         showFrameOnClick(showReport, reportFrame);
-        showFrameOnClick(searchClient, searchClientFrame);
+        showFrameOnClick(searchHotel, searchHotelFrame);
 
-        panel.add(showTables);
-        panel.add(showReport);
-        panel.add(searchClient);
-
-        add(panel);
+        rightPanel.add(showTables);
+        rightPanel.add(showReport);
+        rightPanel.add(searchHotel);
     }
 
     private void showFrameOnClick(JButton button, JFrame frame) {

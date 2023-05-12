@@ -1,7 +1,5 @@
 package ru.shchelkin.util;
 
-import ru.shchelkin.Frame.admin.AdminViewDataFrame;
-
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.lang.reflect.Field;
@@ -11,8 +9,8 @@ import java.util.stream.IntStream;
 
 public class EntityTable<T> extends JTable {
     private final DefaultTableModel tableModel;
-    private List<T> data;
     private final Field[] fields;
+    private List<T> data;
 
     public EntityTable(Class<T> clazz, List<T> data) {
         this.data = data;

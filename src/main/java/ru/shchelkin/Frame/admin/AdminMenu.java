@@ -3,7 +3,6 @@ package ru.shchelkin.Frame.admin;
 import ru.shchelkin.Frame.BackButtonFrame;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.util.Objects;
 
@@ -20,14 +19,12 @@ public class AdminMenu extends BackButtonFrame {
 
     public AdminMenu(AdminViewDataFrame viewDataFrame, ReportFrame reportFrame, SearchClientFrame searchClientFrame) throws HeadlessException {
         super(title);
-        setSize(700, 400);
+        setSize(400, 250);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
         int buttonMargin = 10;
-        int borderMargin = 20;
-        JPanel panel = new JPanel(new GridLayout(2, 1, buttonMargin, buttonMargin));
-        panel.setBorder(new EmptyBorder(borderMargin, borderMargin, borderMargin, borderMargin));
+        rightPanel.setLayout(new GridLayout(3, 1, buttonMargin, buttonMargin));
 
         Objects.requireNonNull(viewDataFrame);
         this.viewDataFrame = viewDataFrame;
@@ -36,19 +33,17 @@ public class AdminMenu extends BackButtonFrame {
         Objects.requireNonNull(viewDataFrame);
         this.searchClientFrame = searchClientFrame;
 
-        AddButtons(panel);
+        AddButtons();
     }
 
-    private void AddButtons(JPanel panel) {
+    private void AddButtons() {
         showFrameOnClick(showTables, viewDataFrame);
         showFrameOnClick(showReport, reportFrame);
         showFrameOnClick(searchClient, searchClientFrame);
 
-        panel.add(showTables);
-        panel.add(showReport);
-        panel.add(searchClient);
-
-        add(panel);
+        rightPanel.add(showTables);
+        rightPanel.add(showReport);
+        rightPanel.add(searchClient);
     }
 
     private void showFrameOnClick(JButton button, JFrame frame) {

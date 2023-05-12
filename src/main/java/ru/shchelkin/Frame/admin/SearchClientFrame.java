@@ -26,6 +26,7 @@ public class SearchClientFrame extends BackButtonFrame {
     private final JButton passportSearchButton = new JButton("Поиск");
 
     private final JdbcTemplate jdbcTemplate;
+
     public SearchClientFrame(JdbcTemplate jdbcTemplate) {
         super("Поиск клиента");
         this.jdbcTemplate = jdbcTemplate;
@@ -55,7 +56,7 @@ public class SearchClientFrame extends BackButtonFrame {
         leftPanel.add(surnameSearchButton);
 
         JPanel passportPanel = new JPanel();
-        passportPanel.setBorder(new EmptyBorder(30, 0, 0 ,0));
+        passportPanel.setBorder(new EmptyBorder(30, 0, 0, 0));
         passportPanel.setLayout(new BoxLayout(passportPanel, BoxLayout.Y_AXIS));
         passportPanel.add(passportSerialLabel);
         passportPanel.add(passportSerialText);

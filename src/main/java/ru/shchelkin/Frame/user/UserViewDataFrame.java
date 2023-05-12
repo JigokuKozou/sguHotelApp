@@ -83,8 +83,8 @@ public class UserViewDataFrame extends BackButtonFrame {
             }
         });
         JPanel buttonPanel = new JPanel();
-        buttonPanel.add(updateButton);
-        buttonPanel.add(deleteButton);
+        // buttonPanel.add(updateButton);
+        // buttonPanel.add(deleteButton);
         rightPanel.removeAll();
         rightPanel.setLayout(new BorderLayout());
         rightPanel.add(scrollPane, BorderLayout.CENTER);
